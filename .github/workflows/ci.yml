@@ -14,20 +14,24 @@ jobs:
 
     # Los 'steps' son la secuencia de tareas que se ejecutarán.
     steps:
-      # 1. Clona tu repositorio en la máquina virtual.
-      - name: Clonar repositorio
-        uses: actions/checkout@v3
+      # 1. Obtener el código
+      - name: Checkout del código
+        uses: actions/checkout@v4
 
-      # 2. Configura el entorno de Node.js.
+      # 2. Configurar Node.js
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: 18
 
-      # 3. Instala las dependencias del proyecto
+      # 3. Instalar dependencias
       - name: Instalar dependencias
         run: npm install
 
-      # 4. Ejecuta el comando de pruebas que configuramos en package.json.
+      # 4. Dar permisos a Jest
+      - name: Arreglar permisos de Jest
+        run: chmod +x node_modules/.bin/jest
+
+      # 5. Ejecutar las pruebas
       - name: Ejecutar pruebas
         run: npm test
