@@ -1,34 +1,33 @@
-# Nombre del workflow
-name: CI de Node.js
+# Nombre del workflow que aparecerá en la pestaña "Actions" de GitHub
+name: CI Node.js
 
-# Cuándo se debe ejecutar
+# Define cuándo se ejecutará el workflow. En este caso, en cada 'push' a la rama 'main'.
 on:
-  # Ejecutar en cada push a la rama 'main'
   push:
-    branches: ["main"]
+    branches: [main]
 
-# Trabajos que se van a ejecutar
+# Define los trabajos (jobs) que se van a ejecutar.
 jobs:
-  # Nombre del trabajo
   build-and-test:
-    # En qué sistema operativo correr
+    # Especifica la máquina virtual
     runs-on: ubuntu-latest
 
+    # Los 'steps' son la secuencia de tareas que se ejecutarán.
     steps:
-      # 1. Obtener el código del repositorio
-      - name: Checkout del código
-        uses: actions/checkout@v4
+      # 1. Clona tu repositorio en la máquina virtual.
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
 
-      # 2. Configurar el entorno de Node.js
+      # 2. Configura el entorno de Node.js.
       - name: Configurar Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: "18"
 
-      # 3. Instalar dependencias (Paso de "Compilación" para JS)
+      # 3. Instala las dependencias del proyecto
       - name: Instalar dependencias
         run: npm install
 
-      # 4. Ejecutar las pruebas
+      # 4. Ejecuta el comando de pruebas que configuramos en package.json.
       - name: Ejecutar pruebas
         run: npm test
