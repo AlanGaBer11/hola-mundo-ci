@@ -1,0 +1,23 @@
+{
+  "name": "hola-mundo-ci",
+  "version": "1.0.0",
+  "description": "Ejemplo de CI",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanGaBer11/hola-mundo-ci.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanGaBer11/hola-mundo-ci/issues"
+  },
+  "homepage": "https://github.com/AlanGaBer11/hola-mundo-ci#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
